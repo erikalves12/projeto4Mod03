@@ -1,0 +1,30 @@
+{
+  "name": "projeto4mod03",
+  "version": "1.0.0",
+  "description": "Projeto 4 final",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index",
+    "start": "node src/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erikalves12/projeto4Mod03.git"
+  },
+  "keywords": [],
+  "author": "Erik Alves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erikalves12/projeto4Mod03/issues"
+  },
+  "homepage": "https://github.com/erikalves12/projeto4Mod03#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
