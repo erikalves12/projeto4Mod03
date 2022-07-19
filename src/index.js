@@ -9,8 +9,9 @@ const app = express();
 
 connectDatabase();
 app.use(cors());
-app.use("/users", usersRoutes);
 app.use(express.json());
+app.use("/users", usersRoutes);
+
 
 app.listen(port, (req, res) => {
   console.log(`Servidor rodando na porta ${port} `);
