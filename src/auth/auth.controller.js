@@ -1,22 +1,25 @@
 const authService = require("./auth.service");
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcryptjs");
 const loginController = async (req, res) => {
   const { email, password } = req.body;
 
   const user = await authService.loginService(email);
 
   if (!user) {
-    return res.status(400).send({message:"Usuário náo encontrado no banco de dados!"})
+    return res
+      .status(400)
+      .send({ message: "Usuário náo encontrado no banco de dados!" });
   }
-  
+
   const isPasswordValid = await bcrypt.compare(password, user.password);
 
-if(!isPasswordValid){
-    return res.status(400).send({message:"senha inválida!"})
-}
+  if (!isPasswordValid) {
+    return res.status(400).send({ message: "senha inválida!" });
+  }
 
+  const token = authService.generateToken(user.id);
 
-  res.send(user);
+  res.send({ token });
 };
 
-module.exports =  { loginController }
+module.exports = { loginController };
