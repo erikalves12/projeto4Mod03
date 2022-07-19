@@ -17,17 +17,23 @@ const createUserController = async (req, res) => {
     .createUserService(req.body)
     .catch((err) => console.log(err.message));
 
-if(!newUser) {
-    return res
-      .status(400)
-      .send({ message: "Erro ao criar o usuário!" })
-}
+  if (!newUser) {
+    return res.status(400).send({ message: "Erro ao criar o usuário!" });
+  }
 
-res.status(201).send(newUser)
+  res.status(201).send(newUser);
 };
 
 const findAllUserController = async (req, res) => {
-  res.send({ message: "e aí" });
+  const user = await userService.findAllUserService();
+
+  if (user.length === 0) {
+    return res
+      .status(400)
+      .send({ message: "Não existem usuários cadastrados!" });
+  }
+
+  res.send(user);
 };
 
 module.exports = {
